@@ -26,7 +26,7 @@ Heap D    5         101
 
 The winning strategy during normal play is to finish every move with a nim-sum of zero (000). When played as a _misère_ game, this strategy is also optimum until the move would leave only heaps of size one. In this case the correct move is to leave an odd number of heaps of size one, such that the opposing player will always remove the last object, and so lose.
 
-While a program could therefore be written to play Nim in the mathematically optimal way, this project instead uses reinforcement learning in order to train an AI to play Nim.
+While a program could therefore be written to play Nim in the mathematically optimal way, this project instead uses reinforcement learning in order to train an AI to play Nim. Note that since we are playing _misère_ and the board we are using starts with a nim-sum of 0, if the second player plays optimally, they should always win.
 
 
 ### Reinforcement Learning: Q-Learning
@@ -36,8 +36,11 @@ Reinforcement Learning is a process whereby an AI agent is given rewards or puni
 * The Q-learning algorithm starts with Q(s, a) = 0 for all states s and actions a, as it has no initial knowledge about which actions are more valuble to take in any state.
 * From an initial state s, an available action will be taken, transitioning to a new state s', and a reward (or punishment) given for the action.
 * The agent then updates its estimate for Q(s, a), using the most recently received reward, its old estimate, and the estimated future reward, following this formula:
+
 ![Q_{updated}(s, a) \leftarrow Q_{old}(s, a) + \alpha ((Reward_{current} + Reward_{future}) - Q_{old}(s, a))](https://render.githubusercontent.com/render/math?math=Q_%7Bupdated%7D(s%2C%20a)%20%5Cleftarrow%20Q_%7Bold%7D(s%2C%20a)%20%2B%20%5Calpha%20((Reward_%7Bcurrent%7D%20%2B%20Reward_%7Bfuture%7D)%20-%20Q_%7Bold%7D(s%2C%20a)))
+
 where α is the 'learning rate' - how much new information is valued over known information.
+
 * The agent then continues to make moves until the end of the game, and plays multiple repeated games, each time maintaining and updating the values for Q(s, a), gradually learning better and better estimates for the values of all possible actions from any state, if enough games are played.
 
 
