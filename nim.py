@@ -102,7 +102,7 @@ class NimAI():
         If no Q-value exists yet in `self.q`, return 0.
         """
 
-        q_val = self.q.get([(tuple(state), action)])
+        q_val = self.q.get((tuple(state), action))
 
         return q_val if q_val else 0
 
@@ -152,7 +152,7 @@ class NimAI():
             # If no value for this state, action yet, value is 0
             action_value = action_value if action_value else 0
 
-            if action_value > best_action_value or best_action_value == None:
+            if best_action_value == None or action_value > best_action_value:
                 best_action_value = action_value
 
         return best_action_value
@@ -189,7 +189,7 @@ class NimAI():
             # If no value for this state, action yet, value is 0
             action_value = action_value if action_value else 0
 
-            if action_value > best_action_value or best_action_value == None:
+            if best_action_value == None or action_value > best_action_value:
                 best_action_value = action_value
                 best_action = action
 
