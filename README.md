@@ -95,7 +95,7 @@ The choose_action function should accept a state as input (and optionally an eps
 
 Requires python(3) to run:
 
-$python(3) play.py
+$python(3) play.py [num_games=10000]
 
 
 
