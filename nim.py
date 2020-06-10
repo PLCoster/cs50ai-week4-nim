@@ -121,6 +121,7 @@ class NimAI():
         `alpha` is the learning rate, and `new value estimate`
         is the sum of the current reward and estimated future rewards.
         """
+
         # Calculate the updated q-value
         new_q_val = old_q + self.alpha * ((reward + future_rewards) - old_q)
 
@@ -177,7 +178,7 @@ class NimAI():
         actions = Nim.available_actions(state)
 
         # If using epsilon greedy, epsilon probability of random move:
-        if epsilon and random.random() <= epsilon:
+        if epsilon and random.random() <= self.epsilon:
             return random.choice(list(actions))
 
         # Otherwise return a move with the highest possible Q-value:
@@ -192,7 +193,6 @@ class NimAI():
             if best_action_value == None or action_value > best_action_value:
                 best_action_value = action_value
                 best_action = action
-
         return best_action
 
 def train(n):
