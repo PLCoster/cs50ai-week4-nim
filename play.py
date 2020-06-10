@@ -17,7 +17,6 @@ def main():
 
     print(f'Training AI on {n} games')
     ai = train(n)
-    print(ai.q)
     print(f'AI Trained on {n} games')
     print(f'Value of {len(ai.q)} actions have been estimated.')
     play(ai)
